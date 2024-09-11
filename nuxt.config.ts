@@ -2,6 +2,11 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
+  nitro: {
+    firebase: {
+      gen: 2,
+    }
+  },
   build: {
     transpile: ["vuetify"],
   },
