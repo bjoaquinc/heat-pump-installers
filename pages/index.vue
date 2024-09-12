@@ -1,15 +1,15 @@
 <template>
     <div class="container limit-width mx-auto w-100">
         <v-main class="mx-4 pt-4 mt-sm-8">
-            <v-row id="about" align="center" class="py-12">
+            <v-row id="home" align="center" class="py-12">
                 <v-col cols="12" md="6">
                     <v-container class="pr-md-8">
                         <v-row>
                             <v-col cols="12">
-                                <h1 class="text-h3 text-sm-h2 font-weight-bold">Find Heat Pump Installers Near You</h1>
+                                <h1 class="text-h3 text-sm-h2 font-weight-bold">Top Heat Pump Installers Across Canada</h1>
                             </v-col>
                             <v-col cols="12" class="mt-6">
-                                <p class="text-h5">Welcome to our platform dedicated to connecting you with skilled heat pump installers. We help you find experienced professionals ready to enhance your home's energy efficiency with top-quality heat pump installations.</p>
+                                <p class="text-h5">Based on Google Reviews, Reddit suggestions and advice on the internet</p>
                             </v-col>
                             <v-col cols="12" class="mt-6">
                                 <v-btn
@@ -33,7 +33,7 @@
                 </v-col>
             </v-row>
             <div id="contractors" class="pt-15 d-flex flex-column">
-                <h2 class="text-h4 text-sm-h2">Our Contractors</h2>
+                <h2 class="text-h4 text-sm-h2">Contractors</h2>
                 <!-- Filter Section -->
                 <v-row class="mt-6">
                     
@@ -69,7 +69,47 @@
                     </template>
                 </v-data-table>
             </div>
-            
+            <!-- About Section -->
+            <v-row id="about" align="center" class="py-12">
+                <v-col cols="12" md="7">
+                    <v-container class="pr-md-8">
+                        <v-row>
+                            <v-col cols="12">
+                                <h1 class="text-h4 text-sm-h2">About Me</h1>
+                            </v-col>
+                            <v-col cols="12" class="mt-sm-6">
+                                <p class="text-subtitle-1 text-sm-h5">Hi! My name is Joaquin, I’m a software engineer and I started Heat Pump Installers. ca to make it easier for Canadian homeowners and reliable heat pump contractors to find each other. After several HVAC technicians tried to talk me out of getting a heat pump and some contractors clearly overpricing me (I suspect because of the government benefits), I wanted to help make the process easier for other people like me. This website is a work-in-progress and I update it frequently. If you have any suggestions for improvements, please email me here:
+</p>
+                            </v-col>
+                            <!-- <v-col cols="12" class="mt-6">
+                                <v-btn
+                                    @click="scrollToSection('contractors')"
+                                    color="primary"
+                                    size="x-large"
+                                >
+                                    Find Installers
+                                </v-btn>
+                            </v-col> -->
+                        </v-row>
+                    </v-container>
+                </v-col>
+                <v-col cols="12" md="5">
+                    <v-img 
+                        src="~/assets/img/about.jpeg"
+                        class="rounded-xl"
+                        aspect-ratio="16/9"
+                        cover
+                    />
+                </v-col>
+            </v-row>
+            <!-- Footer -->
+            <v-footer class="mt-12">
+                <v-row align="center" justify="center">
+                    <v-col cols="12" class="text-center">
+                        <p class="text-subtitle-1">© 2024 Heat Pump Installers. All rights reserved.</p>
+                    </v-col>
+                </v-row>
+            </v-footer>
         </v-main class="d-flex">
         
     </div>
@@ -85,10 +125,10 @@ const WEBSITE_URL = 'https://example.com'
 
 // SEO metadata
 useSeoMeta({
-    title: 'Find Heat Pump Installers Near You',
-    ogTitle: 'Find Heat Pump Installers Near You',
-    description: 'Welcome to our platform dedicated to connecting you with skilled heat pump installers. We help you find experienced professionals ready to enhance your home\'s energy efficiency with top-quality heat pump installations.',
-    ogDescription: 'Welcome to our platform dedicated to connecting you with skilled heat pump installers. We help you find experienced professionals ready to enhance your home\'s energy efficiency with top-quality heat pump installations.',
+    title: 'Top Heat Pump Installers Across Canada',
+    ogTitle: 'Top Heat Pump Installers Across Canada',
+    description: 'Welcome to our platform dedicated to connecting you with skilled heat pump installers in Canada. We help you find experienced professionals ready to enhance your home\'s energy efficiency with top-quality heat pump installations.',
+    ogDescription: 'Welcome to our platform dedicated to connecting you with skilled heat pump installers in Canada. We help you find experienced professionals ready to enhance your home\'s energy efficiency with top-quality heat pump installations.',
     ogImage: '/assets/img/heat-pump.jpg',
     ogUrl: WEBSITE_URL,
     twitterCard: 'summary_large_image',
@@ -157,10 +197,9 @@ const processedContractors = contractors.map((contractor) => {
     }
 })
 
-const uniqueProvinces = Array.from(new Set(processedContractors.map(contractor => contractor.provinces).flat())).sort()
+
 const selectedProvince = ref('')
 
-const uniqueCities = Array.from(new Set(processedContractors.map(contractor => contractor.cities).flat())).sort()
 const selectedCity = ref('')
 
 
@@ -214,77 +253,10 @@ const headers: DataTableHeader= [
     { title: 'Phone Numbers', key: 'phoneNumbers', sortable: false },
     { title: 'Website', key: 'web_url', sortable: false }
 ]
-
-// const desserts = [
-//     {
-//         id: 1,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 2,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 3,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 4,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 5,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 6,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-//     {
-//         id: 7,
-//         name: 'Sample, Inc.',
-//         province: 'Ontario',
-//         city: 'Toronto',
-//         email: 'sample@gmail.com',
-//         phone: '123-456-7890',
-//         web_url: 'https://sample.com'
-//     },
-    
-// ]
 </script>
 
 <style lang="sass" scoped>
 .container
-    margin-top: 60px
-    margin-bottom: 200px
+    padding-top: 60px
+    padding-bottom: 60px
 </style>

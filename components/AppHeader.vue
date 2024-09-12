@@ -2,20 +2,10 @@
   <v-app-bar app color="white" height="90">
     <v-toolbar color="white" class="limit-width mx-auto">
       <template #prepend>
-        <v-img src="~/assets/img/logo.png" class="ml-4" :width="200"></v-img>
+        <v-img src="~/assets/img/logo.svg" class="ml-4" :width="200"></v-img>
       </template>
 
       <div v-if="!isMobile">
-        <v-btn
-          @click="scrollToSection('about')"
-          flat
-          variant="text"
-          color="primary"
-          class="text-none mr-4"
-          size="large"
-        >
-          About
-        </v-btn>
 
         <v-btn
           @click="scrollToSection('contractors')"
@@ -26,6 +16,17 @@
           size="large"
         >
           Contractors
+        </v-btn>
+
+        <v-btn
+          @click="scrollToSection('about')"
+          flat
+          variant="text"
+          color="primary"
+          class="text-none mr-4"
+          size="large"
+        >
+          About
         </v-btn>
 
         <v-btn
@@ -52,13 +53,13 @@
   <v-navigation-drawer v-model="drawer" location="right">
     <v-list nav>
       <v-list-item @click="() => {
-        scrollToSection('about')
-        drawer = false
-      }" prepend-icon="mdi-account-multiple-outline" title="About Us" class="text-subtitle-1"></v-list-item>
-      <v-list-item @click="() => {
         scrollToSection('contractors')
         drawer = false
       }" prepend-icon="mdi-tools" title="Contractors" value="inbox" class="text-subtitle-1"></v-list-item>
+      <v-list-item @click="() => {
+        scrollToSection('about')
+        drawer = false
+      }" prepend-icon="mdi-account-multiple-outline" title="About Us" class="text-subtitle-1"></v-list-item>
       <v-list-item title="CONTACT US" value="inbox" class="text-subtitle-1 bg-primary"></v-list-item>
     </v-list>
   </v-navigation-drawer>

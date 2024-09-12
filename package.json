@@ -3,13 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --preset=firebase",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.4.2",
     "@mdi/font": "^7.4.47",
     "@nuxtjs/device": "^3.2.2",
     "firebase-admin": "^12.4.0",
