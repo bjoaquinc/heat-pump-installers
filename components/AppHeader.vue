@@ -2,7 +2,7 @@
   <v-app-bar app color="white" height="90">
     <v-toolbar color="white" class="limit-width mx-auto">
       <template #prepend>
-        <v-img src="~/assets/img/logo.svg" class="ml-4" :width="200"></v-img>
+        <v-img src="~/assets/img/logo.svg" class="ml-4" :width="300"></v-img>
       </template>
 
       <div v-if="!isMobile">

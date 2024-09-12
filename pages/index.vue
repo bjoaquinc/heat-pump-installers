@@ -23,7 +23,7 @@
                         </v-row>
                     </v-container>
                 </v-col>
-                <v-col cols="12" md="6">
+                <v-col cols="12" sm="6">
                     <v-img 
                         src="~/assets/img/heat-pump.jpg"
                         class="rounded-xl"
@@ -120,8 +120,7 @@ import { VDataTable } from 'vuetify/components'
 import contractors_json from '@/assets/data/heat_pump_contractors.json'
 
 const { isMobile } = useDevice();
-// TODO: UPDATE THIS URL
-const WEBSITE_URL = 'https://example.com'
+const WEBSITE_URL = 'https://heatpumpinstallers.ca'
 
 // SEO metadata
 useSeoMeta({
