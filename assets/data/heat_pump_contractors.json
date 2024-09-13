@@ -46,9 +46,9 @@
     {
         "name": "West Bay",
         "provinces": "BC",
-        "cities": "Victoria; nullaimo",
+        "cities": "Victoria; Nanaimo",
         "emails": "office@westbaymechanical.com",
-        "phoneNumbers": "2504788532 (Victoria); 2507297440 (Nullaimo)",
+        "phoneNumbers": "2504788532 (Victoria); 2507297440 (Nanaimo)",
         "website": "https://www.westbaymechanical.com/",
         "review score": null,
         "num of reviews": null,
@@ -442,7 +442,7 @@
     {
         "name": "The Comfort Group",
         "provinces": "BC",
-        "cities": "nullaimo; Parksville",
+        "cities": "Nanaimo; Parksville",
         "emails": "office@comfortgroup.ca",
         "phoneNumbers": "7789495545",
         "website": "https://www.comfortgroup.ca/",
@@ -585,7 +585,7 @@
     {
         "name": "ServiceXCEL",
         "provinces": "BC",
-        "cities": "nullaimo",
+        "cities": "Nanaimo",
         "emails": "info@servicexcel.ca",
         "phoneNumbers": "2507600898",
         "website": "https://www.servicexcel.ca/",

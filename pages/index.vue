@@ -9,16 +9,10 @@
                                 <h1 class="text-h3 text-sm-h2 font-weight-bold">Top Heat Pump Installers Across Canada</h1>
                             </v-col>
                             <v-col cols="12" class="mt-6">
-                                <p class="text-h5">Based on Google Reviews, Reddit suggestions and advice on the internet</p>
+                                <p class="text-h5">Based on Google Reviews, Reddit suggestions and client feedback. On a mission to increase transparency in the industry. Search our database for <strong>FREE</strong>.</p>
                             </v-col>
                             <v-col cols="12" class="mt-6">
-                                <v-btn
-                                    @click="scrollToSection('contractors')"
-                                    color="primary"
-                                    size="x-large"
-                                >
-                                    Find Installers
-                                </v-btn>
+                                <v-select v-model="selectedProvince" @update:model-value="scrollToSection('contractors')" color="primary" label="Choose your province" :items="provinces"></v-select>
                             </v-col>
                         </v-row>
                     </v-container>
@@ -33,9 +27,9 @@
                 </v-col>
             </v-row>
             <div id="contractors" class="pt-15 d-flex flex-column">
-                <h2 class="text-h4 text-sm-h2">Contractors</h2>
+                <!-- <h2 class="text-h4 text-sm-h2">Contractors</h2> -->
                 <!-- Filter Section -->
-                <v-row class="mt-6">
+                <!-- <v-row class="mt-6">
                     
                     <v-col cols="12" md="4">
                         <v-text-field
@@ -45,7 +39,7 @@
                             dense
                         />
                     </v-col>
-                </v-row>
+                </v-row> -->
                 <v-data-table :headers="headers" :items="filteredContractors" item-value="id" class="mt-3" :hide-default-header="isMobile">
                     <template v-slot:item="{ item }">
                         <tr>
@@ -70,7 +64,7 @@
                 </v-data-table>
             </div>
             <!-- About Section -->
-            <v-row id="about" align="center" class="py-12">
+            <v-row id="about" align="center" class="py-12 margin-above">
                 <v-col cols="12" md="7">
                     <v-container class="pr-md-8">
                         <v-row>
@@ -78,7 +72,7 @@
                                 <h1 class="text-h4 text-sm-h2">About Me</h1>
                             </v-col>
                             <v-col cols="12" class="mt-sm-6">
-                                <p class="text-subtitle-1 text-sm-h5">Hi! My name is Joaquin, I’m a software engineer and I started Heat Pump Installers. ca to make it easier for Canadian homeowners and reliable heat pump contractors to find each other. After several HVAC technicians tried to talk me out of getting a heat pump and some contractors clearly overpricing me (I suspect because of the government benefits), I wanted to help make the process easier for other people like me. This website is a work-in-progress and I update it frequently. If you have any suggestions for improvements, please email me here:
+                                <p class="text-subtitle-1 text-sm-h5">Hi! My name is Joaquin, I’m a software engineer and I started this website, Heat Pump Installers, to make it easier for Canadian homeowners and reliable heat pump contractors to find each other. After several HVAC technicians tried to talk me out of getting a heat pump and some contractors clearly overpricing me (I suspect because of the government benefits), I wanted to help make the process easier for other people like me. This website is a work-in-progress and I update it frequently. If you have any suggestions for improvements, please email me here:
 </p>
                             </v-col>
                             <!-- <v-col cols="12" class="mt-6">
@@ -197,27 +191,24 @@ const processedContractors = contractors.map((contractor) => {
 })
 
 
-const selectedProvince = ref('')
+const selectedProvince = ref<string | null>(null)
 
-const selectedCity = ref('')
-
-
-const searchText = ref('')
+const provinces = computed(() => {
+    const provinces = new Set<string>()
+    processedContractors.forEach(contractor => {
+        contractor.provinces.forEach(province => {
+            provinces.add(province)
+        })
+    })
+    return Array.from(provinces).sort();
+})
 
 const filteredContractors = computed(() => {
     let filteredContractors = processedContractors
     // Filter by province
-    if (selectedProvince.value) {
+    if (typeof selectedProvince.value === 'string') {
         filteredContractors = processedContractors.filter(contractor => contractor.provinces.includes(selectedProvince.value))
     } 
-    // Filter by city
-    if (selectedCity.value) {
-        filteredContractors = processedContractors.filter(contractor => contractor.cities.includes(selectedCity.value))
-    }
-    // Filter by search text
-    if (searchText.value) {
-        filteredContractors = processedContractors.filter(contractor => contractor.name.toLowerCase().includes(searchText.value.toLowerCase()) ||  contractor.cities.join(', ').toLowerCase().includes(searchText.value.toLowerCase()) )
-    }
     return filteredContractors
 })
 
@@ -258,4 +249,7 @@ const headers: DataTableHeader= [
 .container
     padding-top: 60px
     padding-bottom: 60px
+
+.margin-above
+    margin-top: 120px
 </style>
